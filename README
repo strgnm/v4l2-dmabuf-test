@@ -1,0 +1,22 @@
+
+-----How to run:
+This program has been proved can run on intel platform (with HD4000 graphics chips).
+
+1. Install drm library on:
+	http://cgit.freedesktop.org/mesa/drm/
+   (If you use ubuntu, you can install libdrm-dev by apt)
+
+2. Build the program by: 
+	make
+
+3. Run the program by:
+	./run.sh
+   (You can also change parameter passed to program)
+
+4. Result:
+	There is an issue of DMABUF. When the format is YUYV and resolution is (160, 120), it fails to read frame.
+	(You can see in run.sh, if the command is "./dmabuf-sharing -M i915 -i /dev/video0 -S 160,120 -f YUYV -b 2",
+	it fails. If the command is "./dmabuf-sharing -M i915 -i /dev/video0 -S 640,480 -f YUYV -b 2" or 
+	"./dmabuf-sharing -M i915 -i /dev/video0 -S 160,120 -f MJPG -b 2", it works well.)
+
+This program is based on Laurent Pinchart: http://www.mail-archive.com/linux-media@vger.kernel.org/msg54806.html
